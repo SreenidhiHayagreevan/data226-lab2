@@ -1,25 +1,18 @@
-"""
-A basic dbt DAG that shows how to run dbt commands via the BashOperator
-Follows the standard dbt seed, run, and test pattern.
-"""
-
 from pendulum import datetime
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.hooks.base import BaseHook
 
-
 DBT_PROJECT_DIR = "/opt/airflow/lab2"
-
 
 conn = BaseHook.get_connection('snowflake_conn')
 with DAG(
     "BuildELT_dbt",
-    start_date=datetime(2024, 10, 14),
+    start_date=datetime(2024, 11, 10),  # Updated start date to Nov 10, 2024
     description="A sample Airflow DAG to invoke dbt runs using a BashOperator",
-    schedule=None,
-    catchup=False,
+    schedule_interval="0 5 * * *",  # Scheduled daily at 5:00 AM
+    catchup=True,  # Enables catchup
     default_args={
         "env": {
             "DBT_USER": conn.login,
