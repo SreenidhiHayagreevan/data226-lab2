@@ -21,8 +21,6 @@ def return_snowflake_conn():
     hook = SnowflakeHook(snowflake_conn_id='snowflake_conn')
     return hook.get_conn()
 
-import requests  # Make sure to import req==uests
-
 @task
 def extract():
     # Retrieve API key and URL template from Airflow Variables
@@ -61,8 +59,6 @@ def extract():
             print(f"Failed to fetch data for {symbol}. Status code: {response.status_code}")
 
     return results[-180:]  # Return the last 180 records after processing all symbols
-
-
 
 @task
 def transform(data):
@@ -109,11 +105,15 @@ def load(transformed_data):
         )
         """)
 
+        # Insert with idempotency check
         insert_sql = f"""
         INSERT INTO {target_table} (symbol, date, open, high, low, close, volume)
-        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        SELECT %s, %s, %s, %s, %s, %s, %s
+        WHERE NOT EXISTS (
+            SELECT 1 FROM {target_table} WHERE date = %s AND symbol = %s
+        )
         """
-
+        
         # Loop over transformed data and insert records into the table
         for record in transformed_data:
             cur.execute(insert_sql, (
@@ -123,7 +123,9 @@ def load(transformed_data):
                 record['high'],
                 record['low'],
                 record['close'],
-                record['volume']
+                record['volume'],
+                record['date'],   # For the NOT EXISTS clause
+                record['symbol']  # For the NOT EXISTS clause
             ))
 
         cur.execute("COMMIT;")
@@ -139,7 +141,6 @@ def load(transformed_data):
             cur.close()
         if conn:  # Ensure connection is closed only if it was created
             conn.close()
-
 
 # Define the DAG
 with DAG(
