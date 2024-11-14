@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stock_analytics
+    description: "Aggregated stock analytics model with moving averages, RSI, and price momentum"
+    columns:
+      - name: symbol
+        description: "Stock symbol (e.g., ISRG, NFLX)"
+      - name: date
+        description: "Date of the stock data"
+      - name: close
+        description: "Closing price"
+      - name: moving_average_7d
+        description: "7-day moving average of the closing price"
+      - name: moving_average_30d
+        description: "30-day moving average of the closing price"
+      - name: rsi
+        description: "14-day Relative Strength Index (RSI)"
+      - name: price_momentum_14d
+        description: "14-day price momentum as a percentage change from previous price"

@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: DEV
+    database: DEV
+    schema: RAW_DATA
+    description: "Schema which stores raw stock data (ETL)"
+    tables:
+      - name: LAB2
+        identifier: LAB2
+        description: "Raw stock data from Airflow ETL process"
+        columns:
+          - name: symbol
+            description: "Stock symbol (e.g., ISRG, NFLX)"
+            tests:
+              - not_null
+          - name: date
+            description: "Date of the stock data"
+            tests:
+              - not_null
+          - name: close
+            description: "Closing price"
+
+  - name: ANALYTICS
+    database: DEV
+    schema: ANALYTICS
+    description: "Schema which stores analytics tables (ELT)"
+    tables:
+      - name: STOCK_ABSTRACT_VIEW
+        identifier: STOCK_ABSTRACT_VIEW
+        description: "View containing abstracted stock data for analytics"
+      - name: STOCK_ANALYTICS
+        identifier: STOCK_ANALYTICS
+        description: "Table containing computed stock analytics (moving averages, RSI, price momentum)"

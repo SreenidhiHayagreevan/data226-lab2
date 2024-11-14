@@ -1,0 +1,14 @@
+lab2:
+  outputs:
+    dev:
+      account: DUVNOQL-ATB72342
+      database: DEV
+      password: Sree@1997
+      role: ACCOUNTADMIN
+      schema: ANALYTICS
+      threads: 1
+      type: snowflake
+      user: SREENIDHIHAYAGREEVAN
+      warehouse: COMPUTE_WH
+  target: dev
+
