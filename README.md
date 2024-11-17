@@ -23,6 +23,7 @@ This project processes stock market data to create an analytics pipeline.
 - **ELT:** Transform raw data using dbt, including key metrics like:
   - 7-day moving average.
   - Relative Strength Index (RSI).
+  - Price Momentum
 - **Visualization:** Present insights using Tableau, Superset, or Preset.
 
 **Use Case:** Stock Price Analytics for companies (e.g., ISRG, NFLX) to analyze trends, momentum, and performance.
