@@ -141,7 +141,8 @@ The project follows a modular design for clarity and scalability.
 <img width="1439" alt="image" src="https://github.com/user-attachments/assets/36cbe5c9-758f-4dcb-814a-ead16c1d7d9a">
 
 ### 4. BI Tool
-- Two dashboard screenshots showcasing insights with different filters and metrics.
+- Dashboard screenshots showcasing insights of RSI Calculation, Price Momentum and Moving Averages.
+<img width="1055" alt="image" src="https://github.com/user-attachments/assets/622d66dc-7583-4fc7-88e9-f9f8ef99aa3a">
 
 ---
 
