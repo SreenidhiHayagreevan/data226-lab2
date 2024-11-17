@@ -165,9 +165,7 @@ data226-lab2/
 │   │   ├── schema.yml
 │   │   └── ── dbt_project.yml   # dbt configuration
 ├── visualizations/
-│   ├── Preset dashboard
-│       └──dashboard_1.png
-│       └── dashboard_2.png
+│   └── preset_dashboard.png
 ├── README.md  # Project documentation
 └── requirements.txt  # Python dependencies
 
