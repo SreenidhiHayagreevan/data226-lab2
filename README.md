@@ -163,7 +163,6 @@ data226-lab2/
 │   │   ├── output/
 │   │   │   └── stock_analytics.sql  # Analytics transformations
 │   │   ├── schema.yml
-│   │   ├── schema.yml
 │   │   └── ── dbt_project.yml   # dbt configuration
 ├── visualizations/
 │   └── preset_dashboard.png
@@ -176,6 +175,6 @@ data226-lab2/
 
 ## Acknowledgments
 - **San Jose State University (SJSU):** This project is part of the Data Analytics Lab series.
-- **Professor Keyung Haan:** T For guidance and support throughout the class and lab.
+- **Professor Keyung Haan:** Thank you yor guidance and support throughout the class and lab.
 - **Alpha Vantage API:** For providing stock market data.  
 - **Tools Used:** Airflow, Snowflake, dbt, Preset, Docker.
